@@ -19,8 +19,8 @@ KEY_DEBUG = 'debug'
 KEY_DOWNLOAD_FORMATTED_VALUES = "download_formatted_values"
 
 # Optional per stack override of the Microsoft identity platform authority,
-# set as data.image_parameters.oneDriveAuthorityUrl on the stack.
-KEY_IMAGE_AUTHORITY_URL = 'oneDriveAuthorityUrl'
+# set as data.image_parameters.microsoftAuthorityUrl on the stack.
+KEY_IMAGE_AUTHORITY_URL = 'microsoftAuthorityUrl'
 
 MANDATORY_PARAMS = [KEY_ORGANIZATIONURL, KEY_API_VERSION]
 
