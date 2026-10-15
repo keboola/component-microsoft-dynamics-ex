@@ -18,6 +18,10 @@ KEY_QUERY = 'query'
 KEY_DEBUG = 'debug'
 KEY_DOWNLOAD_FORMATTED_VALUES = "download_formatted_values"
 
+# Optional per stack override of the Microsoft identity platform authority,
+# set as data.image_parameters.oneDriveAuthorityUrl on the stack.
+KEY_IMAGE_AUTHORITY_URL = 'oneDriveAuthorityUrl'
+
 MANDATORY_PARAMS = [KEY_ORGANIZATIONURL, KEY_API_VERSION]
 
 AUTH_APPKEY = 'appKey'
@@ -59,9 +63,11 @@ class Component(ComponentBase):
         self.parIncremental = bool(self.cfg_params.get(KEY_INCREMENTAL, True))
         self.download_formatted_values = bool(self.cfg_params.get(KEY_DOWNLOAD_FORMATTED_VALUES, False))
 
+        authority_url = self.configuration.image_parameters.get(KEY_IMAGE_AUTHORITY_URL)
+
         self.client = DynamicsClient(self.par_client_id, self.par_client_secret,
                                      self.parResourceUrl, self.parRefreshToken,
-                                     self.parApiVersion)
+                                     self.parApiVersion, authority_url=authority_url)
 
     def get_authorization(self):
 
